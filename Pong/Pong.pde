@@ -74,46 +74,46 @@ void draw () {
   
   if (moveD == true) //mouvements constant de la balle
   {
-    ellX = ellX + éclair;  //établis que la balle bouge vers la droite
+    ellX = ellX + éclair;  //établis que la balle bouge vers la droite, vitesse se fait modifier
   }
   else {
-    ellX = ellX - éclair;
+    ellX = ellX - éclair; //établis que la balle bouge vers la gauche, vitesse se fait modifier
   }
   
-  if (moveB == true) //mouvements constante de la balle
+  if (moveB == true) //établis que la balle bouge vers le bas, vitesse se fait modifier
   {
     ellY = ellY + éclairH;
   }
   else {
-    ellY = ellY - éclairH;
+    ellY = ellY - éclairH; //établis que la balle bouge vers le haut, vitesse se fait modifier
   }
-  if (GrectY <= 10) {
+  if (GrectY <= 10) { 
     moveB = true;
   }
-  if (DrectY >= 690) {
+  if (DrectY >= 690) { 
     moveB = false;
   }
-  if (ellY <= 10) {
+  if (ellY <= 10) { //créer la bordure en haut pour que la balle puisse bouger vers le bas quand elle frappe le haut
     moveB = true;
-    éclair = random(4, 9);
-    éclairH = random(5, 8);
+    éclair = random(4, 9); //numéro au hasard pour la vitesse de la balle a l'horizontal
+    éclairH = random(5, 8); //numéro au hasard pour la vitesse de la balle a la verticale
   }
   
-  if (ellY >= 690) {
+  if (ellY >= 690) { //créer la bordure du bas pour que la balle puisse bouger vers le haut quand elle frappe le bas
     moveB = false;
-    éclair = random(4, 9);
-    éclairH = random(5, 8);
+    éclair = random(4, 9); //numéro au hasard pour la vitesse de la balle a l'horizon
+    éclairH = random(5, 8); //numéro au hasard pour la vitesse de la balle a l'horizon
   }
   
-  if (ellX >= 690) {
-    countG ++;
-    ellX = width / 2;
+  if (ellX >= 690) { //créer la bordure à la droite pour marquer un point
+    countG ++; //ajouter au pointage de la gauche
+    ellX = width / 2; //Ceci est le reset de la balle (les lignes en dessous aussi)
     ellY = height / 2;
-    éclair = random(4, 5);
-    éclairH = random(4, 5);
+    éclair = random(4, 5); //vitesse pour le reset
+    éclairH = random(4, 5); 
   }
   
-  if (ellX <= 10) {
+  if (ellX <= 10) { //Même chose que les lignes d'en haut mais pour la bordure a la gauche
     countR++;
     ellX = width / 2;
     ellY = height / 2;
@@ -123,37 +123,37 @@ void draw () {
   }
   
   
-  if (ellX >= 615 && ellY > DrectY && ellY < (DrectY + 100)) {
-    moveD = false;
-    éclair = random(4, 9);
-    éclairH = random(5, 8);
+  if (ellX >= 615 && ellY > DrectY && ellY < (DrectY + 100)) { //Code pour quand la balle frappe la raquette elle revient de l'autre bord
+    moveD = false; //Boolean pour le mouvement vers le bas
+    éclair = random(4, 9); //Une fois que la balle frappe elle accelere a 4 ou 9
+    éclairH = random(5, 8); //Même chose mais verticale et 5 et 8
   }
-  if (ellX <= 75 && ellY > GrectY && ellY < (GrectY + 100)) {
-    moveD = true;
-    éclair = random(4, 9);
-    éclairH = random(5, 8);
+  if (ellX <= 75 && ellY > GrectY && ellY < (GrectY + 100)) { //^ Même chose que le code d'en haut mais pour l'autre raquette
+    moveD = true; //Boolean pour le mouvement vers le b
+    éclair = random(4, 9); //Une fois que la balle frappe elle accelere a 4 
+    éclairH = random(5, 8); //Même chose mais verticale et 5 et 8
   }
   
 }
 
-void keyPressed( ){
+void keyPressed( ){ //Les codes key pressed et key released sont pour que deucx joueurs puissent jouer en même temps
       if ( key == 'w') 
     {
-      wPressed = true;
+      wPressed = true; //Pour la clé W
     }
     
     if (key == 's') 
     {
-     sPressed = true;
+     sPressed = true; //Pour la clé S
     }
     
     // Mouvement du rectangle a la droite
     if (key == 'o')
     {
-     oPressed = true;
+     oPressed = true; //Pour la clé O
     }
     
-    if (key == 'l')
+    if (key == 'l') //Pour la clé L
     {
       lPressed = true;
     } 
@@ -162,22 +162,22 @@ void keyPressed( ){
 void keyReleased( ){
       if ( key == 'w') 
     {
-      wPressed = false;
+      wPressed = false; //Pour la clé W
     }
     
     if (key == 's') 
     {
-      sPressed = false;
+      sPressed = false; //Pour la clé S
     }
     
     // Mouvement du rectangle a la droite
-    if (key == 'o')
+    if (key == 'o') 
     {
-      oPressed = false;
+      oPressed = false; //Pour la clé O
     }
     
     if (key == 'l')
     {
-      lPressed = false;
+      lPressed = false; //Pour la clé L
     } 
 }
